@@ -36,23 +36,6 @@ class Header extends Component {
     ];
   }
 
-  renderAddButton() {
-    if (this.props.user) {
-      return (
-        <div className="fixed-action-btn">
-          <Link
-            to="/notes/new"
-            className="waves-effect waves-light btn btn-floating btn-large red darken-2 pulse"
-          >
-            <i className="material-icons">add</i>
-          </Link>
-        </div>
-      );
-    }
-
-    return null;
-  }
-
   render() {
     return (
       <nav>
@@ -73,7 +56,6 @@ class Header extends Component {
             {this.renderSideNav()}
           </ul>
         </div>
-        {this.renderAddButton()}
       </nav >
     );
   }
