@@ -1,0 +1,86 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+class Header extends Component {
+  renderHeader() {
+    switch (this.props.user) {
+      case null:
+        return 'Loading...';
+      case false:
+        return [
+          <li key="1"><Link to="/about">About</Link></li>,
+          <li key="2"><a href="/api/login/google">Login</a></li>
+        ];
+      default:
+        return [
+          <li key="1"><Link to="/notes">My Notes</Link></li>,
+          <li key="2"><Link to="/about">About</Link></li>,
+          <li key="3"><a href="/api/logout">Logout</a></li>
+        ];
+    }
+  }
+
+  renderSideNav() {
+    if (this.props.user) {
+      return [
+        <li key="1"><Link to="/notes">My Notes</Link></li>,
+        <li key="2"><Link to="/about">About</Link></li>,
+        <li key="3"><a href="/api/logout">Logout</a></li>
+      ];
+    }
+
+    return [
+      <li key="1"><Link to="/about">About</Link></li>,
+      <li key="2"><a href="/api/login/google">Login</a></li>
+    ];
+  }
+
+  renderAddButton() {
+    if (this.props.user) {
+      return (
+        <div className="fixed-action-btn">
+          <Link
+            to="/notes/new"
+            className="waves-effect waves-light btn btn-floating btn-large red darken-2 pulse"
+          >
+            <i className="material-icons">add</i>
+          </Link>
+        </div>
+      );
+    }
+
+    return null;
+  }
+
+  render() {
+    return (
+      <nav>
+        <div className="nav-wrapper deep-purple darken-3">
+          <Link to="/" className="brand-logo">
+            <i className="material-icons">event_note</i>Note
+          </Link>
+
+          <a href="#!" data-activates="nav-mobile" className="button-collapse">
+            <i className="material-icons">menu</i>
+          </a>
+
+          <ul className="right hide-on-med-and-down">
+            {this.renderHeader()}
+          </ul>
+
+          <ul className="side-nav" id="nav-mobile">
+            {this.renderSideNav()}
+          </ul>
+        </div>
+        {this.renderAddButton()}
+      </nav >
+    );
+  }
+}
+
+function mapStateToProps({ user }) {
+  return { user };
+}
+
+export default connect(mapStateToProps)(Header);
