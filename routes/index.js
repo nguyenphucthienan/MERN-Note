@@ -4,6 +4,7 @@ const router = express.Router();
 const authController = require('../controllers/authController');
 const noteController = require('../controllers/noteController');
 const requireLogin = require('../middlewares/requireLogin');
+const catchErrors = require('../middlewares/catchErrors');
 
 router.get('/login/google', authController.googleLogin);
 
@@ -19,27 +20,27 @@ router.get('/me', authController.currentUser
 
 router.get('/notes/:id',
   requireLogin,
-  noteController.getNote
+  catchErrors(noteController.getNote)
 );
 
 router.get('/notes',
   requireLogin,
-  noteController.getNotes
+  catchErrors(noteController.getNotes)
 );
 
 router.post('/notes',
   requireLogin,
-  noteController.createNote
+  catchErrors(noteController.createNote)
 );
 
 router.put('/notes/:id',
   requireLogin,
-  noteController.updateNote
+  catchErrors(noteController.updateNote)
 );
 
 router.delete('/notes/:id',
   requireLogin,
-  noteController.deleteNote
+  catchErrors(noteController.deleteNote)
 );
 
 module.exports = router;

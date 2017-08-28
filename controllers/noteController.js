@@ -6,7 +6,6 @@ exports.getNote = async (req, res) => {
     _user: req.user.id,
     _id: req.params.id
   });
-
   res.send(note);
 };
 

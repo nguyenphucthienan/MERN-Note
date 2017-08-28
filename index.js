@@ -10,6 +10,7 @@ require('./models/Note');
 require('./services/passportGoogleOAuth');
 const routes = require('./routes');
 const config = require('./config');
+const handleErrors = require('./middlewares/handleErrors');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoURI);
@@ -29,6 +30,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api', routes);
+app.use(handleErrors);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
