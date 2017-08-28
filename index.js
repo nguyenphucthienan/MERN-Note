@@ -6,6 +6,7 @@ const session = require('express-session');
 const passport = require('passport');
 const path = require('path');
 require('./models/User');
+require('./models/Note');
 require('./services/passportGoogleOAuth');
 const routes = require('./routes');
 const config = require('./config');
@@ -27,7 +28,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', routes);
+app.use('/api', routes);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
