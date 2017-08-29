@@ -13,6 +13,7 @@ class NoteList extends Component {
     return this.props.notes.map(note => (
       <NoteCard
         key={note._id}
+        id={note._id}
         title={note.title}
         content={note.content}
       />

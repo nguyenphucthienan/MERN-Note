@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => (
   <div className="container center-align white-text">
-    <h2>About my App</h2>
+    <h2>About My App</h2>
     <p className="flow-text">A simple note taking SPA (Single-Page-App).</p>
     <p className="flow-text">Built using a MERN stack.</p>
     <ul className="stack-list flow-text">

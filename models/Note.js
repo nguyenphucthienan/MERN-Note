@@ -9,12 +9,13 @@ const noteSchema = new Schema({
   title: {
     type: String,
     require: 'Title cannot be blank',
+    maxlength: 150,
     trim: true
   },
   content: {
     type: String,
     require: 'Content cannot be blank',
-    minlength: 100,
+    minlength: 50,
     trim: true
   },
   createAt: Date,

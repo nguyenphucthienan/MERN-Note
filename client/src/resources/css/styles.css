@@ -36,3 +36,7 @@ html {
 .stack-list {
   display: inline-block;
 }
+
+.error-message {
+  margin-bottom: 20px;
+}
