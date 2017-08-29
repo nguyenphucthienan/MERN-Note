@@ -14,6 +14,7 @@ const noteSchema = new Schema({
   content: {
     type: String,
     require: 'Content cannot be blank',
+    minlength: 100,
     trim: true
   },
   createAt: Date,

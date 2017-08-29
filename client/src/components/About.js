@@ -1,15 +1,15 @@
 import React from 'react';
 
 const About = () => (
-  <div className="container center-align flow-text white-text">
+  <div className="container center-align white-text">
     <h2>About my App</h2>
-    <p>A simple note taking SPA (Single-Page-App).</p>
-    <p>Built using a MERN stack.</p>
-    <ul className="stack-list">
-      <li className="element-stack">MongoDB</li>
-      <li className="element-stack">Express</li>
-      <li className="element-stack">React</li>
-      <li className="element-stack">Node.js</li>
+    <p className="flow-text">A simple note taking SPA (Single-Page-App).</p>
+    <p className="flow-text">Built using a MERN stack.</p>
+    <ul className="stack-list flow-text">
+      <li>MongoDB</li>
+      <li>Express</li>
+      <li>React</li>
+      <li>Node.js</li>
     </ul>
   </div>
 );
