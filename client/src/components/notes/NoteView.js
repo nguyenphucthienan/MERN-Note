@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import config from '../../config';
 
 class NoteView extends Component {
   async componentDidMount() {
-    const res = await axios.get(`/api/notes/${this.props.match.params.id}`);
-    this.setState(res.data);
+    try {
+      const res = await axios.get(`/api/notes/${this.props.match.params.id}`);
+
+      if (res.data) {
+        this.setState(res.data);
+      } else {
+        this.props.history.push('/404');
+      }
+    } catch (err) {
+      this.props.history.push('/404');
+    }
   }
 
   render() {
@@ -47,10 +57,10 @@ class NoteView extends Component {
 
     return (
       <div className="container center-align white-text">
-        Loading...
+        <p className="text-flow">Loading...</p>
       </div>
     );
   }
 }
 
-export default NoteView;
+export default withRouter(NoteView);
