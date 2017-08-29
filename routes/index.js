@@ -19,7 +19,6 @@ router.get('/me', authController.currentUser
 );
 
 router.get('/notes/:id',
-  requireLogin,
   catchErrors(noteController.getNote)
 );
 

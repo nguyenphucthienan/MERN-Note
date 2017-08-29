@@ -18,11 +18,11 @@ html {
 }
 
 .transparent-fixed {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .transparent-background {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .navbar-fixed { 
@@ -35,8 +35,17 @@ html {
 
 .stack-list {
   display: inline-block;
+  text-align: left;
 }
 
 .error-message {
   margin-bottom: 20px;
+}
+
+.note-view-title {
+  color: #ffab40;
+}
+
+.link-to-copy {
+  display: block;
 }

@@ -6,7 +6,7 @@ class Header extends Component {
   renderHeader() {
     switch (this.props.user) {
       case null:
-        return 'Loading...';
+        return <div>Loading...</div>;
       case false:
         return [
           <li key="1"><Link to="/about">About</Link></li>,

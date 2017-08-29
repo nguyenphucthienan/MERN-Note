@@ -10,14 +10,22 @@ class NoteList extends Component {
   }
 
   renderNotes() {
-    return this.props.notes.map(note => (
-      <NoteCard
-        key={note._id}
-        id={note._id}
-        title={note.title}
-        content={note.content}
-      />
-    ));
+    if (this.props.notes) {
+      return this.props.notes.map(note => (
+        <NoteCard
+          key={note._id}
+          id={note._id}
+          title={note.title}
+          content={note.content}
+        />
+      ));
+    }
+
+    return (
+      <div className="container center-align white-text">
+        Loading...
+      </div>
+    );
   }
 
   render() {

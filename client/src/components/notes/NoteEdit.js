@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter, Link } from 'react-router-dom';
 import axios from 'axios';
+import { fetchNote, resetNote } from '../../actions';
 
 import NoteFieldInput from './NoteFieldInput';
 import NoteFieldTextArea from './NoteFieldTextArea';
 
-class NoteNew extends Component {
-  async createNote(values) {
-    await axios.post('/api/notes', values);
+class NoteEditForm extends Component {
+  componentDidMount() {
+    this.props.fetchNote(this.props.match.params.id);
+  }
+
+  componentWillUnmount() {
+    this.props.resetNote();
+  }
+
+  async updateNote(values) {
+    await axios.put(`/api/notes/${this.props.match.params.id}`, values);
     this.props.history.push('/notes');
   }
 
   render() {
     return (
       <div className="container center-align white-text">
-        <h2>Add New Note</h2>
         <div>
-          <form onSubmit={this.props.handleSubmit(values => this.createNote(values))}>
+          <form onSubmit={this.props.handleSubmit(values => this.updateNote(values))}>
             <Field
               type="text"
               name="title"
@@ -34,7 +43,7 @@ class NoteNew extends Component {
               Cancel
           </Link>
             <button type="submit" className="btn green darken-1 right">
-              <i className="material-icons right">done</i>Add
+              <i className="material-icons right">update</i>Update
             </button>
           </form>
         </div>
@@ -65,7 +74,12 @@ function validate(values) {
   return errors;
 }
 
-export default reduxForm({
-  form: 'noteNew',
+function mapStateToProps({ note }) {
+  return { initialValues: note };
+}
+
+export default connect(mapStateToProps, { fetchNote, resetNote })(reduxForm({
+  form: 'noteEdit',
   validate
-})(withRouter(NoteNew));
+  // enableReinitialize: true
+})(withRouter(NoteEditForm)));

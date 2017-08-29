@@ -3,9 +3,9 @@ const Note = mongoose.model('Note');
 
 exports.getNote = async (req, res) => {
   const note = await Note.findOne({
-    _user: req.user.id,
     _id: req.params.id
   });
+
   res.send(note);
 };
 
