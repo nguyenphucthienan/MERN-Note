@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions';
 
@@ -9,9 +9,9 @@ import About from './About';
 import Landing from './Landing';
 import RequireAuth from './auth/requireAuth';
 import Dashboard from './Dashboard';
-import NoteNew from './notes/NoteNew';
-import NoteView from './notes/NoteView';
+import NoteAdd from './notes/NoteAdd';
 import NoteEdit from './notes/NoteEdit';
+import NoteView from './notes/NoteView';
 import NotFound from './NotFound';
 
 class App extends Component {
@@ -30,11 +30,11 @@ class App extends Component {
                 <Route exact path="/" component={Landing} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/notes" component={RequireAuth(Dashboard)} />
-                <Route exact path="/notes/new" component={RequireAuth(NoteNew)} />
+                <Route exact path="/notes/new" component={RequireAuth(NoteAdd)} />
                 <Route exact path="/notes/:id/edit" component={RequireAuth(NoteEdit)} />
                 <Route exact path="/notes/:id" component={NoteView} />
                 <Route exact path="/404" component={NotFound} />
-                <Route path="*" component={NotFound} />
+                <Redirect from="*" to="/404" />
               </Switch>
             </main>
             <Footer />

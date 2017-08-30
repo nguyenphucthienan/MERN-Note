@@ -5,6 +5,8 @@ import config from '../../config';
 
 class NoteView extends Component {
   async componentDidMount() {
+    document.title = `${config.appName} – Note`;
+
     try {
       const res = await axios.get(`/api/notes/${this.props.match.params.id}`);
 

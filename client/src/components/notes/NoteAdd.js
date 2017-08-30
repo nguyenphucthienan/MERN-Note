@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter, Link } from 'react-router-dom';
 import axios from 'axios';
+import config from '../../config';
 
 import NoteFieldInput from './NoteFieldInput';
 import NoteFieldTextArea from './NoteFieldTextArea';
 
-class NoteNew extends Component {
+class NoteAdd extends Component {
+  componentDidMount() {
+    document.title = `${config.appName} – Add New Note`;
+  }
+
   async createNote(values) {
     await axios.post('/api/notes', values);
     this.props.history.push('/notes');
@@ -66,6 +71,6 @@ function validate(values) {
 }
 
 export default reduxForm({
-  form: 'noteNew',
+  form: 'noteAdd',
   validate
-})(withRouter(NoteNew));
+})(withRouter(NoteAdd));

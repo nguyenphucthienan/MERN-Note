@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import config from '../config';
 
 class Landing extends Component {
+  componentDidMount() {
+    document.title = `${config.appName}`;
+  }
+
   renderButtons() {
     if (this.props.user) {
       return (

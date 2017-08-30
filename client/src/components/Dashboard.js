@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import config from '../config';
 
 import NoteList from './notes/NoteList';
 
 class Dashboard extends Component {
+  componentDidMount() {
+    document.title = `${config.appName} – My Notes`;
+  }
+
   render() {
     return (
       <div className="container center-align white-text">

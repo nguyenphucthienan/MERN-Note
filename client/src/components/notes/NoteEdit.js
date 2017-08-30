@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter, Link } from 'react-router-dom';
 import axios from 'axios';
+import config from '../../config';
 import { fetchNote, resetNote } from '../../actions';
 
 import NoteFieldInput from './NoteFieldInput';
@@ -10,6 +11,7 @@ import NoteFieldTextArea from './NoteFieldTextArea';
 
 class NoteEditForm extends Component {
   componentDidMount() {
+    document.title = `${config.appName} – Edit Note`;
     this.props.fetchNote(this.props.match.params.id);
   }
 
