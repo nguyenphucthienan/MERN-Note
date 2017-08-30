@@ -25,7 +25,12 @@ class NoteCard extends Component {
           <div className="card-action">
             <Link to={`/notes/${this.props.id}`}>View</Link>
             <Link to={`/notes/${this.props.id}/edit`} onClick={() => this.props.fetchNote(this.props.id)}>Edit</Link>
-            <Link to="#!" onClick={() => this.deleteNote(this.props.id)}>Delete</Link>
+            <a
+              onClick={() => this.deleteNote(this.props.id)}
+              className="pointer-cursor"
+            >
+              Delete
+            </a>
           </div>
         </div>
       </div >

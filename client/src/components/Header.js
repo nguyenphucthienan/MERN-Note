@@ -43,7 +43,7 @@ class Header extends Component {
               <i className="material-icons">event_note</i>Note
           </Link>
 
-            <a href="#!" data-activates="nav-mobile" className="button-collapse">
+            <a data-activates="nav-mobile" className="button-collapse pointer-cursor">
               <i className="material-icons">menu</i>
             </a>
 

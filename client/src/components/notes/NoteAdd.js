@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import config from '../../config';
 
@@ -15,6 +15,19 @@ class NoteAdd extends Component {
   async createNote(values) {
     await axios.post('/api/notes', values);
     this.props.history.push('/notes');
+  }
+
+  renderBackButton() {
+    return (
+      <div className="fixed-action-btn">
+        <a
+          onClick={() => this.props.history.goBack()}
+          className="waves-effect waves-light btn btn-floating btn-large blue darken-2 pulse"
+        >
+          <i className="material-icons">arrow_back</i>
+        </a>
+      </div>
+    );
   }
 
   render() {
@@ -35,14 +48,12 @@ class NoteAdd extends Component {
               label="Content"
               component={NoteFieldTextArea}
             />
-            <Link to="/notes" className="btn red darken-2 left">
-              Cancel
-          </Link>
-            <button type="submit" className="btn green darken-1 right">
-              <i className="material-icons right">done</i>Add
+            <button type="submit" className="btn green darken-1 center-align">
+              <i className="material-icons left">done</i>Add
             </button>
           </form>
         </div>
+        {this.renderBackButton()}
       </div>
     );
   }

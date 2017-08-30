@@ -21,6 +21,11 @@ class NoteView extends Component {
     }
   }
 
+  async deleteNote(id) {
+    await axios.delete(`/api/notes/${id}`);
+    this.props.history.push('/notes');
+  }
+
   renderBackButton() {
     if (this.props.user) {
       return (
@@ -31,6 +36,26 @@ class NoteView extends Component {
           >
             <i className="material-icons">arrow_back</i>
           </Link>
+        </div>
+      );
+    }
+
+    return null;
+  }
+
+  renderEditAndDeleteButtons() {
+    if (this.props.user) {
+      return (
+        <div className="row">
+          <Link to={`/notes/${this.props.match.params.id}/edit`} className="btn orange darken-2 left">
+            <i className="material-icons left">edit</i>Edit
+        </Link>
+          <a
+            onClick={() => this.deleteNote(this.props.match.params.id)}
+            className="btn red darken-1 right"
+          >
+            <i className="material-icons left">delete_forever</i>Delete
+          </a>
         </div>
       );
     }
@@ -71,6 +96,7 @@ class NoteView extends Component {
               </div>
             </div>
           </div>
+          {this.renderEditAndDeleteButtons()}
           {this.renderBackButton()}
         </div>
       );

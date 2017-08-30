@@ -42,6 +42,10 @@ html {
   margin-bottom: 20px;
 }
 
+.pointer-cursor {
+  cursor: pointer;
+}
+
 .note-view-title {
   color: #ffab40;
   word-wrap: break-word;  

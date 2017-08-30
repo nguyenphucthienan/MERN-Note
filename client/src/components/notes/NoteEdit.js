@@ -21,7 +21,21 @@ class NoteEditForm extends Component {
 
   async updateNote(values) {
     await axios.put(`/api/notes/${this.props.match.params.id}`, values);
-    this.props.history.push('/notes');
+    this.props.history.push(`/notes/${this.props.match.params.id}`);
+  }
+
+  renderBackButton() {
+    return (
+      <div className="fixed-action-btn">
+        <Link
+          to="#!"
+          onClick={() => this.props.history.goBack()}
+          className="waves-effect waves-light btn btn-floating btn-large blue darken-2 pulse"
+        >
+          <i className="material-icons">arrow_back</i>
+        </Link>
+      </div>
+    );
   }
 
   render() {
@@ -41,14 +55,12 @@ class NoteEditForm extends Component {
               label="Content"
               component={NoteFieldTextArea}
             />
-            <Link to="/notes" className="btn red darken-2 left">
-              Cancel
-          </Link>
-            <button type="submit" className="btn green darken-1 right">
-              <i className="material-icons right">update</i>Update
+            <button type="submit" className="btn green darken-1 center-align">
+              <i className="material-icons left">update</i>Update
             </button>
           </form>
         </div>
+        {this.renderBackButton()}
       </div>
     );
   }
