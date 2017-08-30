@@ -44,6 +44,19 @@ html {
 
 .note-view-title {
   color: #ffab40;
+  word-wrap: break-word;  
+}
+
+.note-view-content {
+  white-space: pre-line;
+}
+
+.note-card-title {
+  word-wrap: break-word;
+}
+
+.note-card-content {
+  text-align: left;
 }
 
 .link-to-copy {

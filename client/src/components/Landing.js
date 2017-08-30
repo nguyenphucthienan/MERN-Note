@@ -8,7 +8,7 @@ class Landing extends Component {
     document.title = `${config.appName}`;
   }
 
-  renderButtons() {
+  renderMainButton() {
     if (this.props.user) {
       return (
         <Link
@@ -36,7 +36,7 @@ class Landing extends Component {
       <div className="container center-align white-text">
         <h2>MERN Note</h2>
         <p className="flow-text">Keep your notes and share them with other people</p>
-        {this.renderButtons()}
+        {this.renderMainButton()}
       </div>
     );
   }

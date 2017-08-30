@@ -21,11 +21,7 @@ class NoteList extends Component {
       ));
     }
 
-    return (
-      <div className="container center-align white-text">
-        Loading...
-      </div>
-    );
+    return null;
   }
 
   render() {

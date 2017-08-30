@@ -55,7 +55,7 @@ function validate(values) {
     errors.title = 'Title cannot be blank';
   }
 
-  if (values.title && values.title.length > 150) {
+  if (values.title && values.title.trim().length > 150) {
     errors.title = 'Title must be a string with a maximum length of 150 characters';
   }
 
@@ -63,7 +63,7 @@ function validate(values) {
     errors.content = 'Content cannot be blank';
   }
 
-  if (values.content && values.content.length < 10) {
+  if (values.content && values.content.trim().length < 10) {
     errors.content = 'Content must be at least 10 characters';
   }
 

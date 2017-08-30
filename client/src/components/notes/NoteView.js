@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import config from '../../config';
 
@@ -20,6 +21,23 @@ class NoteView extends Component {
     }
   }
 
+  renderBackButton() {
+    if (this.props.user) {
+      return (
+        <div className="fixed-action-btn">
+          <Link
+            to="/notes"
+            className="waves-effect waves-light btn btn-floating btn-large blue darken-2 pulse"
+          >
+            <i className="material-icons">arrow_back</i>
+          </Link>
+        </div>
+      );
+    }
+
+    return null;
+  }
+
   render() {
     if (this.state) {
       return (
@@ -31,7 +49,7 @@ class NoteView extends Component {
                 <h5 className="card-title note-view-title">
                   {this.state.title}
                 </h5>
-                <p className="flow-text">{this.state.content}</p>
+                <p className="flow-text note-view-content">{this.state.content}</p>
               </div>
             </div>
             <div className="card transparent-background">
@@ -53,6 +71,7 @@ class NoteView extends Component {
               </div>
             </div>
           </div>
+          {this.renderBackButton()}
         </div>
       );
     }
@@ -65,4 +84,8 @@ class NoteView extends Component {
   }
 }
 
-export default withRouter(NoteView);
+function mapStateToProps({ user }) {
+  return { user };
+}
+
+export default connect(mapStateToProps)(withRouter(NoteView));

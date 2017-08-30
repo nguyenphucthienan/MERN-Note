@@ -19,8 +19,8 @@ class NoteCard extends Component {
       <div className="col s12 m6">
         <div className="card transparent-background">
           <div className="card-content white-text">
-            <span className="card-title">{this.textSlicing(this.props.title, 50)}</span>
-            <p>{this.textSlicing(this.props.content, 100)}</p>
+            <span className="card-title note-card-title">{this.textSlicing(this.props.title, 20)}</span>
+            <p className="note-card-content">{this.textSlicing(this.props.content, 100)}</p>
           </div>
           <div className="card-action">
             <Link to={`/notes/${this.props.id}`}>View</Link>

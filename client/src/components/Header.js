@@ -4,22 +4,20 @@ import { Link } from 'react-router-dom';
 
 class Header extends Component {
   renderHeader() {
-    switch (this.props.user) {
-      case null:
-        return <div>Loading...</div>;
-      case false:
-        return [
-          <li key="1"><Link to="/about">About</Link></li>,
-          <li key="2"><a href="/api/login/google">Login</a></li>
-        ];
-      default:
-        return [
-          <li key="1"><Link to="/notes">My Notes</Link></li>,
-          <li key="2"><Link to="/about">About</Link></li>,
-          <li key="3"><a href="/api/logout">Logout</a></li>
-        ];
+    if (this.props.user) {
+      return [
+        <li key="1"><Link to="/notes">My Notes</Link></li>,
+        <li key="2"><Link to="/about">About</Link></li>,
+        <li key="3"><a href="/api/logout">Logout</a></li>
+      ];
     }
+
+    return [
+      <li key="1"><Link to="/about">About</Link></li>,
+      <li key="2"><a href="/api/login/google">Login</a></li>
+    ];
   }
+
 
   renderSideNav() {
     if (this.props.user) {
