@@ -36,27 +36,29 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="navbar-fixed">
-        <nav className="transparent-fixed">
-          <div className="nav-wrapper">
-            <Link to="/" className="brand-logo">
-              <i className="material-icons">event_note</i>Note
+      <header>
+        <div className="navbar-fixed">
+          <nav className="transparent-fixed">
+            <div className="nav-wrapper">
+              <Link to="/" className="brand-logo">
+                <i className="material-icons">event_note</i>Note
           </Link>
 
-            <a data-activates="nav-mobile" className="button-collapse pointer-cursor">
-              <i className="material-icons">menu</i>
-            </a>
+              <a data-activates="nav-mobile" className="button-collapse pointer-cursor">
+                <i className="material-icons">menu</i>
+              </a>
 
-            <ul className="right hide-on-med-and-down">
-              {this.renderHeader()}
-            </ul>
+              <ul className="right hide-on-med-and-down">
+                {this.renderHeader()}
+              </ul>
 
-            <ul className="side-nav" id="nav-mobile">
-              {this.renderSideNav()}
-            </ul>
-          </div>
-        </nav >
-      </div>
+              <ul className="side-nav" id="nav-mobile">
+                {this.renderSideNav()}
+              </ul>
+            </div>
+          </nav >
+        </div>
+      </header>
     );
   }
 }
